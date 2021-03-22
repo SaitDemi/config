@@ -34,7 +34,8 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+p exec --no-startup-id dmenu_recency
-bindsym $mod+p exec --no-startup-id "rofi -combi-modi window,run -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
+bindsym $mod+p exec --no-startup-id "rofi -combi-modi window,drun,run -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
 # launch categorized menu
 # bindsym $mod+z exec --no-startup-id morc_menu
 
@@ -64,15 +65,13 @@ bindsym $mod+Ctrl+m exec pavucontrol
 bindsym XF86AudioMicMute exec "pactl set-source-mute 1 toggle"
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 3"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 3"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+w exec $BROWSER
-bindsym $mod+Shift+f exec pcmanfm
-# bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
+bindsym $mod+Shift+f exec thunar
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
@@ -85,6 +84,9 @@ bindsym $mod+Print exec --no-startup-id flameshot screen -c -p ~/Pictures/
 
 # bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# Jump to urgent window
+bindsym $mod+x [urgent=latest] focus
 
 # focus_follows_mouse no
 
@@ -113,9 +115,9 @@ bindsym $mod+Shift+l move right
 # bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+workspace_auto_back_and_forth no
+# bindsym $mod+b workspace back_and_forth
+# bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
 bindsym $mod+s split h;exec notify-send 'tile horizontally'
@@ -160,24 +162,28 @@ bindsym $mod+Shift+u move container to workspace prev; workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:1L
-set $ws2 2:2L
-set $ws3 3:3L
-set $ws4 4:4L
-set $ws5 5:7R
-set $ws6 6:8R
-set $ws7 7:9R
-set $ws8 8:10R
+set $ws1 1:1
+set $ws2 2:2
+set $ws3 3:3
+set $ws4 4:4
+set $ws5 5:5
+set $ws6 6:6
+set $ws7 7:7
+set $ws8 8:8
+set $ws9 8:9
+set $ws10 10:10
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
-bindsym $mod+7 workspace $ws5
-bindsym $mod+8 workspace $ws6
-bindsym $mod+9 workspace $ws7
-bindsym $mod+0 workspace $ws8
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 
 # Move focused container to workspace
@@ -185,19 +191,23 @@ bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+7 move container to workspace $ws5
-bindsym $mod+Shift+8 move container to workspace $ws6
-bindsym $mod+Shift+9 move container to workspace $ws7
-bindsym $mod+Shift+0 move container to workspace $ws8
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 workspace $ws1 output LVDS1
 workspace $ws2 output LVDS1
 workspace $ws3 output LVDS1
 workspace $ws4 output LVDS1
-workspace $ws5 output DP2 LVDS1
+workspace $ws5 output LVDS1
 workspace $ws6 output DP2 LVDS1
 workspace $ws7 output DP2 LVDS1
 workspace $ws8 output DP2 LVDS1
+workspace $ws9 output DP2 LVDS1
+workspace $ws10 output DP2 LVDS1
 
 # Move to workspace with focused container
 # bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -217,33 +227,35 @@ workspace $ws8 output DP2 LVDS1
 assign [class="jetbrains-phpstorm"] $ws1
 
 # Open specific applications in floating mode
-# for_window [title="alsamixer"] floating enable border pixel 1
-# for_window [class="calamares"] floating enable border normal
-# for_window [class="Clipgrab"] floating enable
-# for_window [title="File Transfer*"] floating enable
-# for_window [class="fpakman"] floating enable
-# for_window [class="Galculator"] floating enable border pixel 1
-# for_window [class="GParted"] floating enable border normal
-# for_window [title="i3_help"] floating enable sticky enable border normal
-# for_window [class="Lightdm-settings"] floating enable
-# for_window [class="Lxappearance"] floating enable sticky enable border normal
-# for_window [class="Manjaro-hello"] floating enable
-# for_window [class="Manjaro Settings Manager"] floating enable border normal
-# for_window [title="MuseScore: Play Panel"] floating enable
-# for_window [class="Nitrogen"] floating enable sticky enable border normal
-# for_window [class="Oblogout"] fullscreen enable
-# for_window [class="octopi"] floating enable
-# for_window [title="About Pale Moon"] floating enable
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="calamares"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [class="Steam"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="fpakman"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [title="About Pale Moon"] floating enable
 # for_window [class="Pamac-manager"] floating enable
-# for_window [class="Pavucontrol"] floating enable
-# for_window [class="qt5ct"] floating enable sticky enable border normal
-# for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-# for_window [class="Simple-scan"] floating enable border normal
-# for_window [class="(?i)System-config-printer.py"] floating enable border normal
-# for_window [class="Skype"] floating enable border normal
-# for_window [class="Timeset-gui"] floating enable border normal
-# for_window [class="(?i)virtualbox"] floating enable border normal
-# for_window [class="Xfburn"] floating enable
+# for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 # for_window [urgent=latest] focus
@@ -408,11 +420,11 @@ gaps outer 0
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
+smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -453,6 +465,15 @@ mode "$mode_gaps_outer" {
 
 exec --no-startup-id autorandr -c
 exec --no-startup-id nitrogen --restore
-# exec --no-startup-id xfce4-panel
 exec --no-startup-id kupfer --no-splash
 exec_always sleep 4 && nitrogen --restore
+
+
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# Some stuff with focus
+# focus_wrapping yes
+
+

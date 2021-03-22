@@ -75,3 +75,14 @@ bindkey '^e' edit-command-line
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
+# Source manjaro-zsh-config
+# if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+# 	source /usr/share/zsh/manjaro-zsh-config
+# fi
+
+#Use manjaro zsh prompt
+# if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+# 	source /usr/share/zsh/manjaro-zsh-prompt
+# fi
+
+

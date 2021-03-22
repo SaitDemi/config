@@ -13,7 +13,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-commentary' " for simple commenting
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-startify'
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'ludovicchabant/vim-gutentags'
@@ -37,6 +36,6 @@ source $HOME/.config/nvim/general.vim
 source $HOME/.config/nvim/keys.vim
 
 " Settings for Plugins
-source $HOME/.config/nvim/setup-coc.vim
-source $HOME/.config/nvim/setup-closetag.vim
-source $HOME/.config/nvim/setup-auto-pairs.vim
+" source $HOME/.config/nvim/setup-coc.vim
+" source $HOME/.config/nvim/setup-closetag.vim
+" source $HOME/.config/nvim/setup-auto-pairs.vim
