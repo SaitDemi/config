@@ -34,8 +34,9 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+p exec --no-startup-id dmenu_recency
-bindsym $mod+p exec --no-startup-id "rofi -combi-modi window,drun,run -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
+bindsym $mod+Shift+p exec --no-startup-id "rofi -combi-modi window -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
+bindsym $mod+p exec --no-startup-id "rofi -combi-modi drun,run -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi -modi combi -ic-n-theme 'Papirus-Dark' -show-icons"
 # launch categorized menu
 # bindsym $mod+z exec --no-startup-id morc_menu
 
@@ -45,14 +46,14 @@ bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun,run -show comb
 
 #exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-exec --no-startup-id pa-applet
+# exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
-# bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"; exec "pactl set-sink-mute 1 toggle"
-# bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"; exec "pactl set-sink-volume 1 +5%"
-# bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"; exec "pactl set-sink-volume 1 -5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"; exec "pactl set-sink-mute 1 toggle"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +2%"; exec "pactl set-sink-volume 1 +2%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -2%"; exec "pactl set-sink-volume 1 -2%"
 
 # bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"; exec "pactl set-sink-mute 1 toggle"
 # bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 3%+"
@@ -466,6 +467,7 @@ mode "$mode_gaps_outer" {
 exec --no-startup-id autorandr -c
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id kupfer --no-splash
+exec --no-startup-id dunst
 exec_always sleep 4 && nitrogen --restore
 
 

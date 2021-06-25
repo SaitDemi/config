@@ -84,5 +84,3 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
 # 	source /usr/share/zsh/manjaro-zsh-prompt
 # fi
-
-
