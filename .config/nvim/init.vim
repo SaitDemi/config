@@ -34,6 +34,7 @@ call plug#end()
 
 source $HOME/.config/nvim/general.vim
 source $HOME/.config/nvim/keys.vim
+source $HOME/.config/nvim/wsl.vim
 
 " Settings for Plugins
 " source $HOME/.config/nvim/setup-coc.vim
